@@ -50,7 +50,7 @@ class FileController extends Controller
      */
     public function download($token)
     {
-        $file = $this->uploadFileService->download($token);
+        $file = $this->uploadFileService->getFile($token);
         return response()->download($file->path, $file->name);
     }
 }

@@ -63,9 +63,10 @@ class TaskService
 
     /**
      * @param $id
+     * @return mixed
      */
     public function deleteTask($id)
     {
-        $this->taskModel->findOrFail($id)->delete();
+        return $this->taskModel->findOrFail($id)->delete();
     }
 }

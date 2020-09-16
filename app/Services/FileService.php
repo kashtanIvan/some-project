@@ -52,7 +52,7 @@ class FileService
      * @param $token
      * @return File
      */
-    public function download($token): File
+    public function getFile($token): File
     {
         return $this->fileModel->whereToken($token)->firstOrFail();
     }
