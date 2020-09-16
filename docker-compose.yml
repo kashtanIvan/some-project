@@ -1,0 +1,31 @@
+version: '3'
+services:
+  nginx:
+    build:
+      context: ./docker/nginx
+      dockerfile: development.Dockerfile
+    volumes:
+      - ./public:/var/www/html/public
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - php
+  php:
+    build:
+      context: ./docker/php
+      dockerfile: development.Dockerfile
+    volumes:
+      - ./:/var/www/html:cached
+      - ./docker/php/upload.ini:/usr/local/etc/php/conf.d/00-upload.ini
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=some_project
+      - MYSQL_PASSWORD=secret
+      - MYSQL_DATABASE=some_project
+    ports:
+      - 3306:3306
