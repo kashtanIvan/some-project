@@ -41,7 +41,7 @@
                     @csrf
                     <input type="hidden" name="task_id" value="{{ $task->id }}">
                     <label for="file" class=" @error('file') text-red-600 @enderror">Upload file</label>
-                    <input type="file" value="" name="file" class="border-2 @error('file') border-red-600 @enderror" id="file">
+                    <input type="file" accept="application/pdf" value="" name="file" class="border-2 @error('file') border-red-600 @enderror" id="file">
                     @error('file')
                         <small class="text-red-500">
                             {{ $errors->first('file') }}
